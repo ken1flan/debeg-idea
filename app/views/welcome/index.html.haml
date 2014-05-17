@@ -29,3 +29,7 @@
           = idea.title
         - else
           = idea.title
+      %button.btn.btn-info.pull-right
+        %span.glyphicon.glyphicon-star
+        %b
+          = idea.likes.count

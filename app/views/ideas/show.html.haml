@@ -1,5 +1,10 @@
 %h1
   = @idea.title
+  %button.btn.btn-info.pull-right
+    %span.glyphicon.glyphicon-star
+    %b
+      = @idea.likes.count
+
 
 %hr
 
@@ -12,6 +17,12 @@
           = comment.body
         - else
           = comment.body
+
+        %button.btn.btn-info.pull-right
+          %span.glyphicon.glyphicon-star
+          %b
+            = comment.likes.count
+
 - if logged_in?
   = form_for [@idea, @comment] do |f|
     - if @comment.errors.any?
