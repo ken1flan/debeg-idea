@@ -18,4 +18,11 @@ class IdeasController < ApplicationController
       render 'welcome/index'
     end
   end
+
+  def like
+    @idea = Idea.find(params[:id])
+    if current_user
+      @current_user_like = @idea.like(current_user)
+    end
+  end
 end
