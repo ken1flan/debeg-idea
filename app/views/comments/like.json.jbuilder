@@ -1,6 +1,8 @@
-json.ideaCount @comment.like_count
+json.count @comment.like_count
 if @current_user_like
-  json.(@current_user_like, :id, :created_at, :updated_at)
+  json.idea_id @comment.idea_id
+  json.comment_id @comment.id
+  json.deleted @current_user_like.deleted
   json.status true
 else
   json.status false

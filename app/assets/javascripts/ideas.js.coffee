@@ -9,5 +9,16 @@ $ ->
         $("button[name='" + button_name + "']").each ->
           $(@).removeAttr('disabled')
           $(@).find('.like_count').text(json.count)
-      else
-       alert("failed:" + json.status)
+
+  $('.btn_like_comment').click ->
+    $(@).attr('disabled', '')
+    regex = $(@).attr("name").match(/^like_button_comment([0-9]+)_([0-9]+)/)
+    idea_id = regex[1]
+    comment_id = regex[2]
+    url = '/ideas/' + idea_id + '/comments/' + comment_id + '/like.json'
+    $.getJSON url, (json) ->
+      if json.status
+        button_name = 'like_button_comment' + json.idea_id + '_' + json.comment_id
+        $("button[name='" + button_name + "']").each ->
+          $(@).removeAttr('disabled')
+          $(@).find('.like_count').text(json.count)

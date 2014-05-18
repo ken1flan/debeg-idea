@@ -17,10 +17,10 @@
         - else
           = comment.body
 
-        %button.btn.btn-info.pull-right
-          %span.glyphicon.glyphicon-star
-          %b
-            = comment.likes.count
+        = button_tag name: "like_button_comment#{@idea.id}_#{comment.id}", class: "btn_like_comment btn pull-right" do
+          %span.glyphicon.glyphicon-thumbs-up
+          %span.like_count
+            = comment.like_count
 
 - if logged_in?
   = form_for [@idea, @comment] do |f|
