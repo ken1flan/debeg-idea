@@ -5,12 +5,12 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy', as: :logout
 
   resources :ideas, only: [:show, :create] do
-    member do
-      get 'like'
-    end
-    resources :comments, only: :create do
-      get 'like'
-    end
+    resources :comments, only: :create
+  end
+
+  scope :likes do
+    get 'ideas/:likable_id' => 'likes#idea'
+    get 'comments/:likable_id' => 'likes#comment'
   end
 
   match '*path' => 'application#error404', via: :all

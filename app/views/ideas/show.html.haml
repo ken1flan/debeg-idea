@@ -17,7 +17,7 @@
         - else
           = comment.body
 
-        = button_tag name: "like_button_comment#{@idea.id}_#{comment.id}", class: "btn_like_comment btn pull-right" do
+        = button_tag name: "like_button_comment#{comment.id}", class: "btn_like_comment btn pull-right" do
           %span.glyphicon.glyphicon-thumbs-up
           %span.like_count
             = comment.like_count

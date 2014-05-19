@@ -13,11 +13,4 @@ class CommentsController < ApplicationController
       render 'ideas/show'
     end
   end
-
-  def like
-    @comment = Comment.find_by(idea_id: params[:idea_id], id: params[:comment_id])
-    if current_user
-      @current_user_like = @comment.like(current_user)
-    end
-  end
 end
