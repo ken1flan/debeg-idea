@@ -1,5 +1,9 @@
 %h1
   = @idea.title
+  = button_tag name: "like_button_idea#{@idea.id}", class: "btn_like_idea btn pull-right" do
+    %span.glyphicon.glyphicon-thumbs-up
+    %span.like_count
+      = @idea.like_count
 
 %hr
 
@@ -12,6 +16,12 @@
           = comment.body
         - else
           = comment.body
+
+        = button_tag name: "like_button_comment#{comment.id}", class: "btn_like_comment btn pull-right" do
+          %span.glyphicon.glyphicon-thumbs-up
+          %span.like_count
+            = comment.like_count
+
 - if logged_in?
   = form_for [@idea, @comment] do |f|
     - if @comment.errors.any?

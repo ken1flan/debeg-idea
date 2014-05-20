@@ -1,4 +1,6 @@
 class Comment < ActiveRecord::Base
+  include Liking
+
   belongs_to :idea
   belongs_to :user
 

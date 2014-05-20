@@ -29,3 +29,8 @@
           = idea.title
         - else
           = idea.title
+
+      = button_tag name: "like_button_idea#{idea.id}", class: "btn_like_idea btn pull-right" do
+        %span.glyphicon.glyphicon-thumbs-up
+        %span.like_count
+          = idea.like_count

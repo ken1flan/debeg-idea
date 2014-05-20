@@ -1,4 +1,6 @@
 class Idea < ActiveRecord::Base
+  include Liking
+
   has_many :comments
   belongs_to :user
 

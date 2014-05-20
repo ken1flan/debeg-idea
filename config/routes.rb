@@ -8,5 +8,10 @@ Rails.application.routes.draw do
     resources :comments, only: :create
   end
 
+  scope :likes do
+    get 'ideas/:likable_id' => 'likes#idea'
+    get 'comments/:likable_id' => 'likes#comment'
+  end
+
   match '*path' => 'application#error404', via: :all
 end

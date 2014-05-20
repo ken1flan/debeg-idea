@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140427143623) do
+ActiveRecord::Schema.define(version: 20140517034628) do
 
   create_table "comments", force: true do |t|
     t.integer  "idea_id"
@@ -32,6 +32,17 @@ ActiveRecord::Schema.define(version: 20140427143623) do
   end
 
   add_index "ideas", ["user_id"], name: "index_ideas_on_user_id"
+
+  create_table "likes", force: true do |t|
+    t.string   "likable_type",                 null: false
+    t.integer  "likable_id",                   null: false
+    t.integer  "user_id",                      null: false
+    t.boolean  "deleted",      default: false, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "likes", ["likable_type", "user_id"], name: "index_likes_on_likable_type_and_user_id"
 
   create_table "users", force: true do |t|
     t.string   "provider",   null: false

@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :ideas
+  has_many :likes
 
   def self.find_or_create_from_auth_hash(auth_hash)
     provider = auth_hash[:provider]
